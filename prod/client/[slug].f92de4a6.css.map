@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "[slug].f92de4a6.css",
+  "sources": [
+    "../../../../../../src/routes/authors/[slug].svelte"
+  ],
+  "sourcesContent": [
+    "<script context=\"module\">\n\timport { fetchData } from \"../../components/fetchData\";\n\timport api from \"../../components/api\";\n\n\texport let author;\n\n\texport async function preload({ params, query }) {\n\t\t// retrieve authors\n\t\tauthor = await fetchData(this, params.slug, api.users);\n\n\t\treturn;\n\t}\n</script>\n\n<style>\n\t/*\n\t\tBy default, CSS is locally scoped to the component,\n\t\tand any unused styles are dead-code-eliminated.\n\t\tIn this page, Svelte can't know which elements are\n\t\tgoing to appear inside the {{{authors.html}}} block,\n\t\tso we have to use the :global(...) modifier to target\n\t\tall elements inside .container\n\t*/\n\t.container :global(h1) {\n\t\tfont-size: 1.4em;\n\t\tfont-weight: 500;\n\t}\n</style>\n\n<svelte:head>\n\t<title>{author.name}</title>\n</svelte:head>\n\n<div class=\"container\">\n\n\t<h1>{author.name}</h1>\n\n\t<div class=\"content\">\n\n\t\t<p>\n\t\t\t{@html author.username}\n\t\t</p>\n\n\t\t<p>{author.email}</p>\n\n\t\t<p>{author.address.street} {author.address.suite}</p>\n\t\t<p>{author.address.city}, {author.address.zipcode}</p>\n\t\t<p>{author.address.geo.lat} {author.address.geo.lng}</p>\n\n\t\t<p>{author.phone}</p>\n\n\t\t<p>{author.website}</p>\n\n\t\t<p>\n\t\t\t {author.company.name} {author.company.catchPhrase} {author.company.bs}\n\n\t\t</p>\n\n\t</div>\n\n</div>\n"
+  ],
+  "names": [],
+  "mappings": "AAuBC,yBAAU,CAAC,AAAQ,EAAE,AAAE,CAAC,AACvB,SAAS,CAAE,KAAK,CAChB,WAAW,CAAE,GAAG,AACjB,CAAC"
+}
