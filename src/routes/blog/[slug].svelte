@@ -21,39 +21,42 @@
 </script>
 
 <style>
-	/*
-		By default, CSS is locally scoped to the component,
-		and any unused styles are dead-code-eliminated.
-		In this page, Svelte can't know which elements are
-		going to appear inside the {{{blog.html}}} block,
-		so we have to use the :global(...) modifier to target
-		all elements inside .content
-	*/
-	.content :global(h2) {
-		margin-top: 1em;
+	h1,
+	h2,
+	h3,
+	li,
+	p,
+	a {
+		font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+			"Segoe UI Emoji", "Segoe UI Symbol";
+		line-height: 1.35;
+	}
 
-		font-size: 1.4em;
-		font-weight: 500;
+	h1 {
+		font-size: 2em;
+		letter-spacing: -1.5;
+		text-transform: uppercase;
+	}
+
+	ul {
+		margin-bottom: 1em;
+		margin-left: 1.3em;
+
+		padding-left: 0;
 	}
 
 	li {
 		margin-bottom: 1em;
 	}
 
-	li h3 {
-		margin-top: 0;
-		margin-bottom: 0.3em;
-
-		text-transform: uppercase;
-	}
-
-	li p {
-		margin-top: 0;
-		margin-bottom: 0.3em;
-	}
-
 	.email-address {
 		font-size: 0.82em;
+		text-transform: lowercase;
+	}
+
+	section {
+		margin-top: 1em;
 	}
 </style>
 
@@ -61,16 +64,18 @@
 	<title>{post.title}</title>
 </svelte:head>
 
-<div class="container">
+<main>
 
 	<h1>{post.title}</h1>
 
 	<a rel="prefetch" href="authors/{post.id}">{author.name}</a>
 
 	<div class="content">
-		{@html post.body}
+		<p>
+			{@html post.body}
+		</p>
 
-		<div>
+		<section>
 			<h2>Comments</h2>
 
 			<ul>
@@ -83,7 +88,7 @@
 				{/each}
 			</ul>
 
-		</div>
+		</section>
 	</div>
 
-</div>
+</main>
