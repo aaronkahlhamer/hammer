@@ -2,11 +2,11 @@
 	import { fetchData } from "../../components/fetchData";
 	import api from "../../components/api";
 
-	export let posts;
+	export let authors;
 
 	export async function preload({ params, query }) {
-		// retrieve articles
-		posts = await fetchData(this, "", api.posts);
+		// retrieve authors
+		authors = await fetchData(this, "", api.users);
 
 		return;
 	}
@@ -15,23 +15,24 @@
 <style>
 	ul {
 		margin-bottom: 1em;
+		line-height: 1.5;
 	}
 </style>
 
 <svelte:head>
-	<title>Blog</title>
+	<title>Authors</title>
 </svelte:head>
 
-<h1>Posts</h1>
+<h1>Authors</h1>
 
 <ul>
-	{#each posts as post}
+	{#each authors as author}
 		<!-- we're using the non-standard `rel=prefetch` attribute to
 				tell Sapper to load the data for the page as soon as
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
 		<li>
-			<a rel="prefetch" href="blog/{post.id}">{post.title}</a>
+			<a rel="prefetch" href="authors/{author.id}">{author.name}</a>
 		</li>
 	{/each}
 </ul>
