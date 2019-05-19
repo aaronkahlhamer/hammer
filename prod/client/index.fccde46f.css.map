@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "index.fccde46f.css",
+  "sources": [
+    "../../../../../../src/routes/authors/index.svelte"
+  ],
+  "sourcesContent": [
+    "<script context=\"module\">\n\timport { fetchData } from \"../../components/fetchData\";\n\timport api from \"../../components/api\";\n\n\texport let authors;\n\n\texport async function preload({ params, query }) {\n\t\t// retrieve authors\n\t\tauthors = await fetchData(this, \"\", api.users);\n\n\t\treturn;\n\t}\n</script>\n\n<style>\n\tul {\n\t\tmargin-bottom: 1em;\n\t\tline-height: 1.5;\n\t}\n</style>\n\n<svelte:head>\n\t<title>Authors</title>\n</svelte:head>\n\n<h1>Authors</h1>\n\n<ul>\n\t{#each authors as author}\n\t\t<!-- we're using the non-standard `rel=prefetch` attribute to\n\t\t\t\ttell Sapper to load the data for the page as soon as\n\t\t\t\tthe user hovers over the link or taps it, instead of\n\t\t\t\twaiting for the 'click' event -->\n\t\t<li>\n\t\t\t<a rel=\"prefetch\" href=\"authors/{author.id}\">{author.name}</a>\n\t\t</li>\n\t{/each}\n</ul>\n"
+  ],
+  "names": [],
+  "mappings": "AAeC,EAAE,cAAC,CAAC,AACH,aAAa,CAAE,GAAG,CAClB,WAAW,CAAE,GAAG,AACjB,CAAC"
+}

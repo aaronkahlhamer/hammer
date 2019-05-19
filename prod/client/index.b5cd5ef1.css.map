@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "index.b5cd5ef1.css",
+  "sources": [
+    "../../../../../../src/routes/blog/index.svelte"
+  ],
+  "sourcesContent": [
+    "<script context=\"module\">\n\timport { fetchData } from \"../../components/fetchData\";\n\timport api from \"../../components/api\";\n\n\texport let posts;\n\n\texport async function preload({ params, query }) {\n\t\t// retrieve articles\n\t\tposts = await fetchData(this, \"\", api.posts);\n\n\t\treturn;\n\t}\n</script>\n\n<style>\n\th1,\n\tli,\n\ta {\n\t\tfont-family: -system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\",\n\t\t\tRoboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\",\n\t\t\t\"Segoe UI Emoji\", \"Segoe UI Symbol\";\n\t\tline-height: 1.35;\n\t}\n\n\th1 {\n\t\tfont-size: 2em;\n\t\tletter-spacing: -1.5;\n\t\ttext-transform: uppercase;\n\t}\n\n\tul {\n\t\tmargin-bottom: 1em;\n\t\tmargin-left: 1.3em;\n\n\t\tpadding-left: 0;\n\t}\n\n\tli {\n\t\tmargin-bottom: 1em;\n\t}\n\n\ta:first-of-type {\n\t\ttext-transform: capitalize;\n\t}\n</style>\n\n<svelte:head>\n\t<title>Blog</title>\n</svelte:head>\n\n<main>\n\n\t<h1>Posts</h1>\n\n\t<ul>\n\t\t{#each posts as post}\n\t\t\t<!-- we're using the non-standard `rel=prefetch` attribute to\n\t\t\t\ttell Sapper to load the data for the page as soon as\n\t\t\t\tthe user hovers over the link or taps it, instead of\n\t\t\t\twaiting for the 'click' event -->\n\t\t\t<li>\n\t\t\t\t<a rel=\"prefetch\" href=\"blog/{post.id}\">{post.title}</a>\n\t\t\t</li>\n\t\t{/each}\n\t</ul>\n\n</main>\n"
+  ],
+  "names": [],
+  "mappings": "AAeC,gBAAE,CACF,gBAAE,CACF,CAAC,cAAC,CAAC,AACF,WAAW,CAAE,UAAU,CAAC,CAAC,aAAa,CAAC,CAAC,kBAAkB,CAAC,CAAC,UAAU,CAAC;GACtE,MAAM,CAAC,CAAC,SAAS,CAAC,CAAC,KAAK,CAAC,CAAC,UAAU,CAAC,CAAC,mBAAmB,CAAC;GAC1D,gBAAgB,CAAC,CAAC,iBAAiB,CACpC,WAAW,CAAE,IAAI,AAClB,CAAC,AAED,EAAE,cAAC,CAAC,AACH,SAAS,CAAE,GAAG,CACd,cAAc,CAAE,IAAI,CACpB,cAAc,CAAE,SAAS,AAC1B,CAAC,AAED,EAAE,cAAC,CAAC,AACH,aAAa,CAAE,GAAG,CAClB,WAAW,CAAE,KAAK,CAElB,YAAY,CAAE,CAAC,AAChB,CAAC,AAED,EAAE,cAAC,CAAC,AACH,aAAa,CAAE,GAAG,AACnB,CAAC,AAED,eAAC,cAAc,AAAC,CAAC,AAChB,cAAc,CAAE,UAAU,AAC3B,CAAC"
+}
